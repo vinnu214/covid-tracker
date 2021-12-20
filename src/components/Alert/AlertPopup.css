@@ -1,0 +1,47 @@
+.alert__container{
+    position: fixed;
+    height: 100vh;
+    width:100vw;
+    background: #6d6d6dc2;
+    z-index: 9;
+    top:0;
+}
+.alert__content{
+    height: 30%;
+    width: 50%;
+    max-width: 45rem;
+    border-radius: 1rem;
+    background: #fff;
+    position: relative;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+.alert__warning{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.alert__warning > svg{
+       height: 5rem;
+    width: 4rem;
+}
+.alert__warning > h3{
+    color: #000;
+    font-family: 'Lobster';
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+}
+.alert__warning > button{
+    padding: 0.5rem 4rem;
+    margin-top: 2rem;
+    color: #fff;
+    background: #335EFD;
+    outline: none;
+    border: none;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}

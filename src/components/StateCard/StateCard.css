@@ -1,0 +1,61 @@
+.state__container{
+    min-height: 15rem;
+    padding: 1rem 0;
+    background-color: #c39ed3;
+    border-radius: 2rem;
+    cursor: pointer;
+    position: relative;
+    background-position: center;
+    background-size: cover;
+}
+.state__container:hover{
+    box-shadow: 5px 5px 5px #ccc;
+    transform: translateY(-0.5rem);
+}
+
+.StateCard__Nav {
+    font-size: 2rem;
+    font-weight: bold;
+    position: absolute;
+    top: 40%;
+    color: #fff;
+    padding: 0 1rem;
+
+
+}
+.StateCard__LessThan{
+    left: 0;
+}
+.StateCard__GreaterThan{
+    right: 0;
+}
+.cardSummary_cnt{
+   font-family: 'Lobster', cursive;
+   letter-spacing: 1px;
+
+}
+.stateCard_MainContainer{
+    display: flex;
+    justify-content: space-around;
+    margin: 1rem 2rem;
+}
+.stateCard_MainContainer > select {
+   background: #e1c1ef;
+    height: 1.5rem;
+    color: #6903a8;
+    font-weight: bold;
+    outline: none;
+}
+.cardSummary__container{
+font-size: 1.25rem;
+}
+.summary__heading{
+    text-decoration: underline;
+    
+}
+.stateCard__container{
+    transition: transform 0.5s ease-in;
+}
+.stateCard__container:hover{
+    transform: scale(1.2);
+}

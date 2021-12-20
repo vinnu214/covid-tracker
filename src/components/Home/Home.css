@@ -1,0 +1,31 @@
+.home__container{
+    width: 95vw;
+    margin: 1rem auto;
+}
+.home__header{
+    display: flex;
+    border-bottom: 2px solid #6903a8;
+    padding: 0.5rem 0;
+    
+}
+.home__states{
+    display:grid;
+grid-template-columns: repeat(3,1fr);
+grid-gap: 2.5rem 1rem;
+    margin: 1rem 0.5rem;
+   
+}
+
+.home__header > *{
+    width :20%;
+}
+
+.not-found{
+   display: flex;
+   flex-direction: column;
+   margin-top: 10rem;
+}
+.not-found img{
+    height: 20rem;
+
+}

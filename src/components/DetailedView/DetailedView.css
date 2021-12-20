@@ -1,0 +1,14 @@
+.detailedView__container{
+    margin-top: 1rem;
+    width: 100%;
+}
+.detailedview__subHeader,.detailedview__content{
+    width:100%
+}
+table{
+    border-collapse: collapse;
+}
+th,td{
+
+    border: 2px solid #6903a8;
+}

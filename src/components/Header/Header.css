@@ -1,0 +1,15 @@
+.header{
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 1rem 0;
+    width:100%;
+    border-bottom: 2px solid #6903a8;
+}
+.header > img {
+    
+    height: 2.5rem;
+    position: relative;
+    top: 0.75rem;
+    margin-right: 1rem;
+
+}
