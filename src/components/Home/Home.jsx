@@ -4,8 +4,8 @@ import { AppContext } from "../../Contexts/AppContext";
 import SearchInput from "../Search/Search";
 import StateCard from "../StateCard/StateCard";
 import "./Home.css";
-import NotFound from "../../icons/icon-not_found.svg";
 import AlertPopup from "../Alert/AlertPopup";
+import NotFound from "../NotFound/NotFound";
 
 function Home() {
   const {
@@ -118,40 +118,37 @@ function Home() {
       <div className="home__container">
         <div className="home__header">
           <h4>States</h4>
-          <span>
-            <SearchInput searchBy="State" />
-          </span>
-          <span>
-            <input
-              type="date"
-              value={selectedDate}
-              onChange={(e) => {
-                if (!isDistrictSelected) {
-                  setSelectedDate(e.target.value);
-                } else {
-                  setIsWarning(true);
-                }
-              }}
-            />
-          </span>
-          <span>
-            <select
-              value={sortingOrder}
-              onChange={(e) => setSortingOrder(e.target.value)}
-            >
-              {!sortingOrder && <option value="0">Select</option>}
-              <option value="1">Confirmed Count - Ascending</option>
-              <option value="2">Confirmed Count - Descending</option>
-              {!selectedDate && (
-                <>
-                  <option value="3">Affected % - Ascending</option>
-                  <option value="4">Affected % - Descending</option>
-                  <option value="5">Vaccinated % - Ascending</option>
-                  <option value="6">Vaccinated % - Descending</option>
-                </>
-              )}
-            </select>
-          </span>
+
+          <SearchInput searchBy="State" />
+
+          <input
+            type="date"
+            value={selectedDate}
+            onChange={(e) => {
+              if (!isDistrictSelected) {
+                setSelectedDate(e.target.value);
+              } else {
+                setIsWarning(true);
+              }
+            }}
+          />
+
+          <select
+            value={sortingOrder}
+            onChange={(e) => setSortingOrder(e.target.value)}
+          >
+            {!sortingOrder && <option value="0">Select</option>}
+            <option value="1">Confirmed Count - Ascending</option>
+            <option value="2">Confirmed Count - Descending</option>
+            {!selectedDate && (
+              <>
+                <option value="3">Affected % - Ascending</option>
+                <option value="4">Affected % - Descending</option>
+                <option value="5">Vaccinated % - Ascending</option>
+                <option value="6">Vaccinated % - Descending</option>
+              </>
+            )}
+          </select>
         </div>
         {modifiedCardsList.length > 0 ? (
           <div className="home__states">
@@ -160,10 +157,7 @@ function Home() {
             ))}
           </div>
         ) : (
-          <div className="not-found">
-            <img src={NotFound} alt="Not Found" />
-            <h2 className="no-data">No Data Found</h2>
-          </div>
+          <NotFound />
         )}
       </div>
       <AlertPopup

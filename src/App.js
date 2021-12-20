@@ -27,12 +27,12 @@ function App() {
     switch (sortingOrder) {
       case "1":
         sortedList.sort(
-          (a, b) => a.details.total.confirmed - b.details.total.confirmed
+          (a, b) => a?.details?.total?.confirmed - b?.details?.total?.confirmed
         );
         break;
       case "2":
         sortedList.sort(
-          (a, b) => b.details.total.confirmed - a.details.total.confirmed
+          (a, b) => b?.details?.total?.confirmed - a?.details?.total?.confirmed
         );
         break;
       case "3":

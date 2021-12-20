@@ -4,8 +4,11 @@
 }
 .home__header{
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     border-bottom: 2px solid #6903a8;
     padding: 0.5rem 0;
+    margin: 1rem;
     
 }
 .home__states{
@@ -18,14 +21,5 @@ grid-gap: 2.5rem 1rem;
 
 .home__header > *{
     width :20%;
-}
-
-.not-found{
-   display: flex;
-   flex-direction: column;
-   margin-top: 10rem;
-}
-.not-found img{
-    height: 20rem;
-
+    min-width:7.5rem;
 }

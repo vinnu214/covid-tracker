@@ -1,11 +1,14 @@
 import React from "react";
 import { useHistory } from "react-router";
 import "../Home/Home.css";
+import NotFound from "../NotFound/NotFound";
 import "./DetailedView.css";
 
 function DetailedView() {
   const history = useHistory();
-  return (
+  console.log(history.location.state);
+  return history.location.state &&
+    Object.keys(history.location.state).length > 0 ? (
     <div className="home__container">
       <div className="home__header">
         <h4>{history.location.state.stateName}</h4>
@@ -62,6 +65,8 @@ function DetailedView() {
         </table>
       </div>
     </div>
+  ) : (
+    <NotFound message="Data is not found for requested scenario" />
   );
 }
 
