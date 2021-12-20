@@ -1,12 +1,14 @@
 .state__container{
     min-height: 15rem;
     padding: 1rem 0;
-    background-color: #c39ed3;
+    background-color: rgba(0, 0, 0, 0.9);
     border-radius: 2rem;
     cursor: pointer;
     position: relative;
     background-position: center;
     background-size: cover;
+    transform: translateY(0.15rem);
+
 }
 .state__container:hover{
     box-shadow: 5px 5px 5px #ccc;
@@ -40,11 +42,17 @@
     margin: 1rem 2rem;
 }
 .stateCard_MainContainer > select {
-   background: #e1c1ef;
+   background: transparent;
+   /* background: #e1c1ef; */
     height: 1.5rem;
-    color: #6903a8;
+    color: #fff;
+    /* color: #6903a8; */
     font-weight: bold;
     outline: none;
+    border: 2px solid #fff;
+}
+.stateCard_MainContainer >h3{
+    color:#fff;
 }
 .cardSummary__container{
 font-size: 1.25rem;
@@ -58,4 +66,18 @@ font-size: 1.25rem;
 }
 .stateCard__container:hover{
     transform: scale(1.2);
+} 
+
+.state__container > img{
+    position: absolute;
+    height: 100%;
+    width:100%;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    border-radius: 2rem;
+    opacity: 0.5;
+    background-color: #000;
+    z-index: -1;
 }
+

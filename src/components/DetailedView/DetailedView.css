@@ -1,6 +1,7 @@
 .detailedView__container{
     margin-top: 1rem;
     width: 100%;
+    background-color: #d898f4;
 }
 .detailedview__subHeader,.detailedview__content{
     width:100%

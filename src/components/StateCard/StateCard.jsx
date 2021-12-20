@@ -3,7 +3,7 @@ import "./StateCard.css";
 import { useHistory } from "react-router";
 import { AppContext } from "../../Contexts/AppContext";
 
-const DisplayCount = (props) => {
+export const DisplayCount = (props) => {
   return (
     <h4
       className="cardSummary__container"
@@ -63,8 +63,12 @@ function StateCard(props) {
       state: props,
     });
   };
+  const stateImage = require(`../../Images/${
+    props.stateCode ?? "GENERAL"
+  }.jpg`);
   return (
     <div className="state__container">
+      <img src={stateImage} alt="" />
       <div>
         <div className="stateCard_MainContainer">
           <h3>{props.stateName ?? props.stateCode}</h3>
@@ -110,7 +114,7 @@ function StateCard(props) {
             )}
           </div>
         ) : (
-          <div>
+          <>
             {cardNav === 0 && (
               <CardSummary
                 heading="Total"
@@ -132,7 +136,7 @@ function StateCard(props) {
                   defaultData)}
               />
             )}
-          </div>
+          </>
         )}
       </div>
       {cardNav !== 0 && (
