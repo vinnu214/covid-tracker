@@ -8,7 +8,8 @@ const AlertPopup = ({ showAlert = true, setShowAlert, errorMsg }) => {
       <div className="alert__content">
         <div className="alert__warning">
           <WarningIcon />
-          <h3>{errorMsg ?? "Error"}</h3>
+          <h2>Warning</h2>
+          <h4>{errorMsg ?? "Error"}</h4>
           <button
             onClick={() => {
               setShowAlert(false);

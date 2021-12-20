@@ -12,7 +12,6 @@ function App() {
   const [isDistrictSelected, setIsDistrictSelected] = useState(false);
   // const [selectedDistrict, setSelectedDistrict] = useState("");
   const [sortingOrder, setSortingOrder] = useState(0);
-  console.log(selectedDate);
   const displaySearchedStates = (listOfStates) => {
     // setSearchedState(searchedState);
     const temp = listOfStates.filter((card) =>

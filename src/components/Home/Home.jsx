@@ -71,12 +71,7 @@ function Home() {
           .then((res) => res.json())
           .then((result) => {
             let tempList = { ...finalList };
-            console.log(
-              Object.entries(result),
-              result,
-              tempList,
-              "Time Initial Result"
-            );
+
             let dataForSelectedDate = [];
             Object.keys(states).forEach((state) => {
               dataForSelectedDate.push({
@@ -163,7 +158,7 @@ function Home() {
       <AlertPopup
         showAlert={isWarning}
         setShowAlert={setIsWarning}
-        errorMsg="Please clear the district filter if selected any."
+        errorMsg="Please clear the district filter before applying date filter."
       />
     </>
   );

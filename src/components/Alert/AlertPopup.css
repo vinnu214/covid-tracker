@@ -5,9 +5,11 @@
     background: #6d6d6dc2;
     z-index: 9;
     top:0;
+    padding: 1rem 0;
+
 }
 .alert__content{
-    height: 30%;
+    height: 40%;
     width: 50%;
     max-width: 45rem;
     border-radius: 1rem;
@@ -27,11 +29,19 @@
        height: 5rem;
     width: 4rem;
 }
-.alert__warning > h3{
+.alert__warning > h2,h3,h4{
     color: #000;
-    font-family: 'Lobster';
-    font-size: 1.5rem;
     letter-spacing: 1px;
+}
+.alert__warning >h2{
+    font-family: 'Lobster';
+    font-size: 2rem;
+margin-bottom: 1rem;
+}
+.alert__warning >h4{
+    font-size: 1.2rem;
+    font-weight: normal;
+    font-family: 'Permanent Marker', cursive;
 }
 .alert__warning > button{
     padding: 0.5rem 4rem;
