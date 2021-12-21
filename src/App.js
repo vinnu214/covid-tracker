@@ -88,10 +88,7 @@ function App() {
           changeSort,
         }}
       >
-        <Header />
-        <BrowserRouter>
-          <Routes />
-        </BrowserRouter>
+        <Routes />
       </AppContext.Provider>
     </div>
   );

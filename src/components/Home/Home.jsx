@@ -23,6 +23,7 @@ function Home() {
   const [isWarning, setIsWarning] = useState(false);
   useEffect(() => {
     let finalList = JSON.parse(localStorage.getItem("dataList") ?? "[]");
+    setSelectedDate("");
     if (!Object.keys(finalList).length > 0) {
       fetch("https://data.covid19india.org/v4/min/data.min.json")
         .then((res) => res.json())
@@ -60,6 +61,11 @@ function Home() {
       setCardsList(finalList);
       setmodifiedCardsList(finalList);
     }
+    return () => {
+      setSortingOrder("");
+      setSelectedDate("");
+      setmodifiedCardsList(JSON.parse(localStorage.getItem("dataList")));
+    };
   }, []);
 
   // data w.r.to time

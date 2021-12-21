@@ -57,9 +57,9 @@
 .cardSummary__container{
 font-size: 1.25rem;
 }
-.summary__heading{
+.summary__heading >i{
     text-decoration: underline;
-    
+    color:#fff;
 }
 .stateCard__container{
     transition: transform 0.5s ease-in;

@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import "./StateCard.css";
 import { useHistory } from "react-router";
+import Select from "../Select/Select";
 import { AppContext } from "../../Contexts/AppContext";
 
 export const DisplayCount = (props) => {
@@ -54,9 +55,10 @@ export const defaultData = {
 
 function StateCard(props) {
   const history = useHistory();
-  const { setIsDistrictSelected, isDistrictSelected } = useContext(AppContext);
   const [cardNav, setCardNav] = useState(0);
   const [selectedDistrict, setSelectedDistrict] = useState("");
+  const { setIsDistrictSelected } = useContext(AppContext);
+
   const showDetailedView = () => {
     history.push({
       pathname: "/detailed",
@@ -66,6 +68,14 @@ function StateCard(props) {
   const stateImage = require(`../../Images/${
     props.stateCode ?? "GENERAL"
   }.jpg`);
+  const onDistrictChanged = (e) => {
+    setSelectedDistrict(e.target.value);
+    if (e.target.value) {
+      setIsDistrictSelected(true);
+    } else {
+      setIsDistrictSelected(false);
+    }
+  };
   return (
     <div className="state__container">
       <img src={stateImage} alt="" />
@@ -73,23 +83,12 @@ function StateCard(props) {
         <div className="stateCard_MainContainer">
           <h3>{props.stateName ?? props.stateCode}</h3>
           {props.details?.districts && (
-            <select
-              onChange={(e) => {
-                setSelectedDistrict(e.target.value);
-                if (e.target.value) {
-                  setIsDistrictSelected(true);
-                } else {
-                  setIsDistrictSelected(false);
-                }
-              }}
-            >
-              <option value="">Select a District</option>
-              {Object.keys(props.details?.districts).map((district, idx) => (
-                <option value={district} key={idx}>
-                  {district}
-                </option>
-              ))}
-            </select>
+            <Select
+              selectedDistrict={selectedDistrict}
+              setSelectedDistrict={setSelectedDistrict}
+              options={props.details?.districts}
+              changed={onDistrictChanged}
+            />
           )}
         </div>
         {!selectedDistrict ? (

@@ -13,3 +13,18 @@ th,td{
 
     border: 2px solid #6903a8;
 }
+.detailedView__container > .not-found{
+    width: 100vw;
+    background: #fff;
+    border: none;
+}
+.detailedView__loading{
+    height: 75vh;
+    display: grid;
+    place-items: center;
+}
+.home__header > h4{
+    font-family: 'Lobster';
+    color: #6903a8;
+    letter-spacing: 2px;
+}
