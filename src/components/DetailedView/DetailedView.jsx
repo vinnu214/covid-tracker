@@ -101,6 +101,37 @@ function DetailedView() {
   //   }
   // }, [sortingOrder]);
 
+
+  const sortData = (sortingOrder) => {
+    const sortedData = [...statedatewiseList].sort((a, b) => {
+      let value1 = a[1]?.total?.confirmed;
+      let value2 = b[1]?.total?.confirmed;
+      if (sortingOrder === "ASC") {
+        return !value1
+          ? 1
+          : !value2
+          ? -1
+          : value1 === value2
+          ? 0
+          : value1 > value2
+          ? 1
+          : -1;
+      } else if (sortingOrder === "DSC") {
+        return !value1
+          ? 1
+          : !value2
+          ? -1
+          : value1 === value2
+          ? 0
+          : value2 > value1
+          ? 1
+          : -1;
+      }
+    });
+    console.log(sortedData, statedatewiseList);
+    setStatedatewiseList(sortedData);
+  };
+
   const onDistrictChanged = (e) => {
     setSelectedDistrict(e.target.value);
     if (e.target.value) {
@@ -157,14 +188,11 @@ function DetailedView() {
             }
           }}
         />
-        {/* <select
-          value={sortingOrder}
-          onChange={(e) => setSortingOrder(e.target.value)}
-        >
+        <select onChange={(e) => sortData(e.target.value)}>
           <option value="0">Select</option>
-          <option value="1">Confirmed Count - Ascending</option>
-          <option value="2">Confirmed Count - Descending</option>
-        </select> */}
+          <option value="ASC">Confirmed Count - Ascending</option>
+          <option value="DSC">Confirmed Count - Descending</option>
+        </select>
         <Select
           selectedDistrict={selectedDistrict}
           setSelectedDistrict={setSelectedDistrict}
