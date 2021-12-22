@@ -7,22 +7,23 @@ import { defaultData, DisplayCount } from "../StateCard/StateCard";
 import "./DetailedView.css";
 import Select from "../Select/Select";
 import { AppContext } from "../../Contexts/AppContext";
+import Pagination from "../Pagination/Pagination";
 
 export const TableData = ({ detailedViewData, date = "Total" }) => {
   return (
-    <tr>
-      <td>{date}</td>
-      <td className="cardSummary_cnt" style={{ color: "#caca28" }}>
+    <div className="detailView__content">
+      <div>{date}</div>
+      <div className="cardSummary_cnt" style={{ color: "#caca28" }}>
         {detailedViewData?.total?.confirmed ?? 0}
-      </td>
-      <td className="cardSummary_cnt" style={{ color: "#068206" }}>
+      </div>
+      <div className="cardSummary_cnt" style={{ color: "#068206" }}>
         {detailedViewData?.total?.recovered ?? 0}
-      </td>
-      <td className="cardSummary_cnt" style={{ color: "#ff0000" }}>
+      </div>
+      <div className="cardSummary_cnt" style={{ color: "#ff0000" }}>
         {detailedViewData?.total?.deceased ?? 0}
-      </td>
+      </div>
 
-      <td>
+      <div>
         <div>
           <DisplayCount
             subHeading="Confirmed"
@@ -40,8 +41,8 @@ export const TableData = ({ detailedViewData, date = "Total" }) => {
             cnt={detailedViewData?.delta?.deceased}
           />
         </div>
-      </td>
-      <td>
+      </div>
+      <div>
         <div>
           <DisplayCount
             subHeading="Confirmed"
@@ -59,8 +60,8 @@ export const TableData = ({ detailedViewData, date = "Total" }) => {
             cnt={detailedViewData?.delta7?.deceased}
           />
         </div>
-      </td>
-    </tr>
+      </div>
+    </div>
   );
 };
 
@@ -72,8 +73,7 @@ function DetailedView() {
     setIsDistrictSelected,
     setSelectedDate,
     selectedDate,
-    isDistrictSelected,
-    sortingOrder,
+
     setSortingOrder,
   } = useContext(AppContext);
 
@@ -90,17 +90,8 @@ function DetailedView() {
     return () => {
       setSortingOrder("");
     };
+    // eslint-disable-next-line
   }, []);
-  // useEffect(() => {
-  //   if (statedatewiseList.length > 0) {
-  //     setStatedatewiseList(
-  //       statedatewiseList.sort((a, b) => {
-  //         return a[1]?.total?.confirmed - b[1]?.total?.confirmed;
-  //       })
-  //     );
-  //   }
-  // }, [sortingOrder]);
-
 
   const sortData = (sortingOrder) => {
     const sortedData = [...statedatewiseList].sort((a, b) => {
@@ -116,19 +107,17 @@ function DetailedView() {
           : value1 > value2
           ? 1
           : -1;
-      } else if (sortingOrder === "DSC") {
-        return !value1
-          ? 1
-          : !value2
-          ? -1
-          : value1 === value2
-          ? 0
-          : value2 > value1
-          ? 1
-          : -1;
       }
+      return !value1
+        ? 1
+        : !value2
+        ? -1
+        : value1 === value2
+        ? 0
+        : value2 > value1
+        ? 1
+        : -1;
     });
-    console.log(sortedData, statedatewiseList);
     setStatedatewiseList(sortedData);
   };
 
@@ -144,13 +133,14 @@ function DetailedView() {
     if (!selectedDistrict && !selectedDate) {
       return (
         <>
-          {statedatewiseList.map((record) => (
+          <Pagination records={statedatewiseList} />
+          {/* {statedatewiseList.map((record) => (
             <TableData
               key={record[0]}
               date={record[0]}
               detailedViewData={record[1]}
             />
-          ))}
+          ))} */}
         </>
       );
     } else if (selectedDate) {
@@ -158,16 +148,20 @@ function DetailedView() {
         statedatewiseList.filter((record) => record[0] === selectedDate)[0] ??
         defaultData;
       return (
-        <TableData
-          date={selectedDateData[0]}
-          detailedViewData={selectedDateData[1]}
-        />
+        <div className="detailedview__content">
+          <TableData
+            date={selectedDateData[0]}
+            detailedViewData={selectedDateData[1]}
+          />
+        </div>
       );
     } else {
       return (
-        <TableData
-          detailedViewData={detailedViewData?.districts[selectedDistrict]}
-        />
+        <div className="detailedview__content">
+          <TableData
+            detailedViewData={detailedViewData?.districts[selectedDistrict]}
+          />
+        </div>
       );
     }
   };
@@ -180,13 +174,7 @@ function DetailedView() {
         <input
           type="date"
           value={selectedDate}
-          onChange={(e) => {
-            setSelectedDate(e.target.value);
-            if (!isDistrictSelected) {
-            } else {
-              // setIsWarning(true);
-            }
-          }}
+          onChange={(e) => setSelectedDate(e.target.value)}
         />
         <select onChange={(e) => sortData(e.target.value)}>
           <option value="0">Select</option>
@@ -204,19 +192,30 @@ function DetailedView() {
         {selectedDistrict && selectedDate ? (
           <NotFound message="Data for selected creteria was not found" />
         ) : statedatewiseList?.length > 0 ? (
-          <table className="detailedview__subHeader">
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Confirmed</th>
-                <th>Recovered</th>
-                <th>Deceased</th>
-                <th>Delta</th>
-                <th>Delta 7</th>
-              </tr>
-            </thead>
-            <tbody className="detailedview__content">{showData()}</tbody>
-          </table>
+          // <table className="detailedview__subHeader">
+          //   <thead>
+          //     <tr>
+          //       <th>Date</th>
+          //       <th>Confirmed</th>
+          //       <th>Recovered</th>
+          //       <th>Deceased</th>
+          //       <th>Delta</th>
+          //       <th>Delta 7</th>
+          //     </tr>
+          //   </thead>
+          //   {showData()}
+          // </table>
+          <div>
+            <div className="detailedview__Header">
+              <h4>Date</h4>
+              <h4>Confirmed</h4>
+              <h4>Recovered</h4>
+              <h4>Deceased</h4>
+              <h4>Delta</h4>
+              <h4>Delta 7</h4>
+            </div>
+            {showData()}
+          </div>
         ) : (
           <h2 className="detailedView__loading">Loading ...</h2>
         )}

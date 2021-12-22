@@ -1,18 +1,8 @@
 .detailedView__container{
     margin-top: 1rem;
     width: 100%;
-    background-color: #d898f4;
 }
-.detailedview__subHeader,.detailedview__content{
-    width:100%
-}
-table{
-    border-collapse: collapse;
-}
-th,td{
 
-    border: 2px solid #6903a8;
-}
 .detailedView__container > .not-found{
     width: 100vw;
     background: #fff;
@@ -27,4 +17,24 @@ th,td{
     font-family: 'Lobster';
     color: #6903a8;
     letter-spacing: 2px;
+}
+.detailedview__Header,.detailView__content{
+    display: grid;
+    grid-template-columns:  repeat(4,1fr) repeat(2,1.5fr);
+    background-color: #d898f4;
+
+    vertical-align: middle;
+}
+.detailedview__Header > h4{
+    border: 1px solid #6903a8;
+    padding: 0.5rem 0;
+}
+.detailView__content{
+    min-height:6rem;
+    
+}
+.detailView__content> div{
+    padding: 0.5rem 0;
+    border: 1px solid #6903a8;
+
 }

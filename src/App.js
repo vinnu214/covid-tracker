@@ -1,24 +1,19 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import Routes from "./Routes";
-import { BrowserRouter } from "react-router-dom";
-import Header from "./components/Header/Header";
-import { AppContext, APPContext } from "./Contexts/AppContext";
+import { AppContext } from "./Contexts/AppContext";
 function App() {
   const [cardsList, setCardsList] = useState([]);
   const [modifiedCardsList, setmodifiedCardsList] = useState([]);
   const [selectedDate, setSelectedDate] = useState("");
   const [searchedState, setSearchedState] = useState("");
   const [isDistrictSelected, setIsDistrictSelected] = useState(false);
-  // const [selectedDistrict, setSelectedDistrict] = useState("");
   const [sortingOrder, setSortingOrder] = useState(0);
   const displaySearchedStates = (listOfStates) => {
-    // setSearchedState(searchedState);
     const temp = listOfStates.filter((card) =>
       card?.stateName?.toLowerCase().includes(searchedState.toLowerCase())
     );
     return temp;
-    // setmodifiedCardsList(temp);
   };
 
   const changeSort = (listToBeSorted) => {
@@ -67,6 +62,7 @@ function App() {
     if (cardsList.length > 0) {
       setmodifiedCardsList(changeSort(displaySearchedStates(cardsList)));
     }
+    // eslint-disable-next-line
   }, [searchedState]);
   return (
     <div className="App">

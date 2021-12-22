@@ -1,0 +1,23 @@
+.Pagination__PageNumber{
+    display: inline-block;
+    margin: 1rem 0.5rem ;
+    padding:  0.25rem 0;
+    background-color: #335EFD;
+    cursor: pointer;
+    color: white;
+    font-family: 'Lobster';
+    width: 4%;
+    text-align: center;
+    border: none;
+    border-radius: 0.5rem;
+}
+.Pagination__PageNumber:hover{
+    transform: translateY(-0.3rem);
+    box-shadow: 5px 5px 5px #4e4e4e;
+}
+.Pagination__PageNumber:focus{
+    background-color: #05b105;
+}
+.Pagination__Nav{
+    text-align: left;
+}

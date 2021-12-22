@@ -66,6 +66,7 @@ function Home() {
       setSelectedDate("");
       setmodifiedCardsList(JSON.parse(localStorage.getItem("dataList")));
     };
+    // eslint-disable-next-line
   }, []);
 
   // data w.r.to time
@@ -105,6 +106,7 @@ function Home() {
       setCardsList(list);
       setmodifiedCardsList(changeSort(displaySearchedStates(list)));
     }
+    // eslint-disable-next-line
   }, [selectedDate]);
   useEffect(() => {
     if (modifiedCardsList.length > 0) {
@@ -112,6 +114,7 @@ function Home() {
         changeSort(displaySearchedStates(modifiedCardsList))
       );
     }
+    // eslint-disable-next-line
   }, [sortingOrder]);
 
   return (
