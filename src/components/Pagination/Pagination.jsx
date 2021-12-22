@@ -30,6 +30,7 @@ const Pagination = ({ records }) => {
   });
   useEffect(() => {
     renderPagination(currentPage);
+    // eslint-disable-next-line
   }, [currentPage]);
   const renderPagination = (pageNum) => {
     pageNum = parseInt(pageNum);
