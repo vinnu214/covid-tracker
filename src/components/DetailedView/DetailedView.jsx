@@ -160,22 +160,31 @@ function DetailedView() {
     <div className="home__container">
       <div className="home__header">
         <h4>{history.location.state.stateName}</h4>
-        <input
-          type="date"
-          value={selectedDate}
-          onChange={(e) => setSelectedDate(e.target.value)}
-        />
-        <select onChange={(e) => sortData(e.target.value)}>
-          <option value="0">Select</option>
-          <option value="ASC">Confirmed Count - Ascending</option>
-          <option value="DSC">Confirmed Count - Descending</option>
-        </select>
-        <Select
-          selectedDistrict={selectedDistrict}
-          setSelectedDistrict={setSelectedDistrict}
-          options={detailedViewData?.districts}
-          changed={onDistrictChanged}
-        />
+        <div>
+          <label> Date : </label>
+          <input
+            type="date"
+            value={selectedDate}
+            onChange={(e) => setSelectedDate(e.target.value)}
+          />
+        </div>
+        <div>
+          <label> Sort By : </label>
+          <select onChange={(e) => sortData(e.target.value)}>
+            <option value="0">Select</option>
+            <option value="ASC">Confirmed Count - Ascending</option>
+            <option value="DSC">Confirmed Count - Descending</option>
+          </select>
+        </div>
+        <div>
+          <label>District : </label>
+          <Select
+            selectedDistrict={selectedDistrict}
+            setSelectedDistrict={setSelectedDistrict}
+            options={detailedViewData?.districts}
+            changed={onDistrictChanged}
+          />
+        </div>
       </div>
       <div className="detailedView__container">
         {selectedDistrict && selectedDate ? (

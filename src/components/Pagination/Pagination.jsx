@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TableData } from "../DetailedView/DetailedView";
 import "./Pagination.css";
 
@@ -16,7 +16,7 @@ const Pagination = ({ records }) => {
   for (let i = 1; i <= Math.ceil(records.length / recordPerPage); i++) {
     pageNumbers.push(i);
   }
-  const renderPageNumbers = pageNumbers.map((number) => {
+  const PageNumbersDesign = pageNumbers.map((number) => {
     return (
       <button
         key={number}
@@ -28,6 +28,48 @@ const Pagination = ({ records }) => {
       </button>
     );
   });
+  useEffect(() => {
+    renderPagination(currentPage);
+  }, [currentPage]);
+  const renderPagination = (pageNum) => {
+    pageNum = parseInt(pageNum);
+    return (
+      <>
+        {pageNum !== 1 && <>{PageNumbersDesign.slice(0, 1)}..............</>}
+        {pageNum < PageNumbersDesign.length / 2 - 1 && (
+          <>
+            {PageNumbersDesign.slice(pageNum - 1, pageNum + 2)}
+            ....................
+          </>
+        )}
+        {(pageNum < PageNumbersDesign.length / 2 + 1 ||
+          pageNum > PageNumbersDesign.length / 2 + 2) && (
+          <>
+            {PageNumbersDesign.slice(
+              PageNumbersDesign.length / 2,
+              PageNumbersDesign.length / 2 + 2
+            )}
+          </>
+        )}
+        {pageNum > PageNumbersDesign.length / 2 && (
+          <>
+            ....................
+            {PageNumbersDesign.slice(pageNum - 1, pageNum + 2)}
+          </>
+        )}
+
+        {pageNum !== PageNumbersDesign.length && (
+          <>
+            ....................
+            {PageNumbersDesign.slice(
+              PageNumbersDesign.length - 1,
+              PageNumbersDesign.length
+            )}
+          </>
+        )}
+      </>
+    );
+  };
   const renderRecords = currentPageRecords.map((record) => {
     return (
       <TableData
@@ -40,7 +82,7 @@ const Pagination = ({ records }) => {
   return (
     <>
       <div>{renderRecords}</div>
-      <div className="Pagination__Nav">{renderPageNumbers}</div>
+      <div className="Pagination__Nav">{renderPagination(currentPage)}</div>
     </>
   );
 };

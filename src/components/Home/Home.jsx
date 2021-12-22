@@ -122,37 +122,44 @@ function Home() {
       <div className="home__container">
         <div className="home__header">
           <h4>States</h4>
+          <div>
+            <label>Search : </label>
+            <SearchInput searchBy="State" />
+          </div>
+          <div>
+            <label>Date : </label>
+            <input
+              type="date"
+              value={selectedDate}
+              onChange={(e) => {
+                if (!isDistrictSelected) {
+                  setSelectedDate(e.target.value);
+                } else {
+                  setIsWarning(true);
+                }
+              }}
+            />
+          </div>
 
-          <SearchInput searchBy="State" />
-
-          <input
-            type="date"
-            value={selectedDate}
-            onChange={(e) => {
-              if (!isDistrictSelected) {
-                setSelectedDate(e.target.value);
-              } else {
-                setIsWarning(true);
-              }
-            }}
-          />
-
-          <select
-            value={sortingOrder}
-            onChange={(e) => setSortingOrder(e.target.value)}
-          >
-            {!sortingOrder && <option value="0">Select</option>}
-            <option value="1">Confirmed Count - Ascending</option>
-            <option value="2">Confirmed Count - Descending</option>
-            {!selectedDate && (
-              <>
-                <option value="3">Affected % - Ascending</option>
-                <option value="4">Affected % - Descending</option>
-                <option value="5">Vaccinated % - Ascending</option>
-                <option value="6">Vaccinated % - Descending</option>
-              </>
-            )}
-          </select>
+          <div>
+            <label>Sort By : </label>
+            <select
+              value={sortingOrder}
+              onChange={(e) => setSortingOrder(e.target.value)}
+            >
+              {!sortingOrder && <option value="0">Select</option>}
+              <option value="1">Confirmed Count - Ascending</option>
+              <option value="2">Confirmed Count - Descending</option>
+              {!selectedDate && (
+                <>
+                  <option value="3">Affected % - Ascending</option>
+                  <option value="4">Affected % - Descending</option>
+                  <option value="5">Vaccinated % - Ascending</option>
+                  <option value="6">Vaccinated % - Descending</option>
+                </>
+              )}
+            </select>
+          </div>
         </div>
         {modifiedCardsList.length > 0 ? (
           <div className="home__states">
