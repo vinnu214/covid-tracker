@@ -131,18 +131,7 @@ function DetailedView() {
   };
   const showData = () => {
     if (!selectedDistrict && !selectedDate) {
-      return (
-        <>
-          <Pagination records={statedatewiseList} />
-          {/* {statedatewiseList.map((record) => (
-            <TableData
-              key={record[0]}
-              date={record[0]}
-              detailedViewData={record[1]}
-            />
-          ))} */}
-        </>
-      );
+      return <Pagination records={statedatewiseList} />;
     } else if (selectedDate) {
       const selectedDateData =
         statedatewiseList.filter((record) => record[0] === selectedDate)[0] ??
@@ -192,19 +181,6 @@ function DetailedView() {
         {selectedDistrict && selectedDate ? (
           <NotFound message="Data for selected creteria was not found" />
         ) : statedatewiseList?.length > 0 ? (
-          // <table className="detailedview__subHeader">
-          //   <thead>
-          //     <tr>
-          //       <th>Date</th>
-          //       <th>Confirmed</th>
-          //       <th>Recovered</th>
-          //       <th>Deceased</th>
-          //       <th>Delta</th>
-          //       <th>Delta 7</th>
-          //     </tr>
-          //   </thead>
-          //   {showData()}
-          // </table>
           <div>
             <div className="detailedview__Header">
               <h4>Date</h4>

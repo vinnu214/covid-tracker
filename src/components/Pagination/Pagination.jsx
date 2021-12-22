@@ -21,7 +21,6 @@ const Pagination = ({ records }) => {
       <button
         key={number}
         id={number}
-        // style={number === currentPage ? { backgroundColor: "green" } : {}}
         className="Pagination__PageNumber"
         onClick={(e) => pageNavClick(e.target.id)}
       >
